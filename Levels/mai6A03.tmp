@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://gbsqo65l6gd8"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fc7vo"]
+[ext_resource type="Texture2D" uid="uid://lvwbnkkw7sdl" path="res://Sprites/Player/Player-rpg.png" id="2_7w25u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p6ka"]
+size = Vector2(21.8653, 26.2784)
+
+[sub_resource type="GDScript" id="GDScript_na25m"]
+script/source = "extends Camera2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+"
+
+[node name="main_level" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_fc7vo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_7w25u")
+hframes = 12
+vframes = 9
+
+[node name="anim" type="AnimationPlayer" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-0.471609, 13.0314)
+scale = Vector2(0.505678, -0.225932)
+shape = SubResource("RectangleShape2D_8p6ka")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+script = SubResource("GDScript_na25m")
